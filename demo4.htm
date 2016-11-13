@@ -1,0 +1,90 @@
+<!DOCTYPE html><html><head><title>isocube-2</title>
+<style>
+
+@keyframes spin3dCube{
+ 0%{transform:rotateX(-33.4deg) rotateY(45deg)}
+ 20%,40%,60%{transform:rotateX(-33.4deg) rotateY(225deg)}
+ 60%,90%,100%{transform:rotateX(-33.4deg) rotateY(405deg)}
+
+}
+
+
+.wrap-cube,
+.cube,
+.cube:after,
+.cube .faces,
+.cube .faces>div{text-align:center;border:0;outline:0;margin:0 auto;perspective:none;backface-visibility:hidden;}
+
+.cube,
+.cube:after,
+.cube .faces>div{position:absolute;width:1em;height:1em;padding:0;}
+
+.wrap-cube,
+.cube{background:transparent;}
+
+.wrap-cube,
+.cube:after{position:relative;}
+
+.wrap-cube{overflow:visible;padding: .32em .22em .32em .22em;}
+
+.cube,
+.cube .faces>div{font:1em/1em sans-serif;}
+.cube .faces>div.up{transform:translate3d(0,-.5em,0) rotate3d(1,0,0,90deg);}
+.cube .faces>div.front{transform:translate3d(0,0,.5em) rotate3d(0,0,0,0);}
+.cube .faces>div.right{transform:translate3d(.5em,0,0) rotate3d(0,1,0,90deg);}
+.cube .faces>div.back{transform:translate3d(0,0,-.5em) rotate3d(0,1,0,-180deg);}
+.cube .faces>div.left{transform:translate3d(-.5em,0,0) rotate3d(0,1,0,-90deg);}
+.cube .faces>div.down{transform:translate3d(0,.5em,0) rotate3d(1,0,0,-90deg);}
+
+.cube{
+ z-index:2;	
+ transform:scale(1);
+ transform-origin:50% 50%; 
+ transform-style: preserve-3d;
+ transform:rotateX(-33.4deg) rotateY(45deg) rotateZ(0deg);
+ transition:transform 1s ease-in-out;
+
+ animation: spin3dCube 4s 0s ease-in-out infinite;
+ 
+ -webkit-user-select:none;
+ -moz-user-select:none; 
+ -ms-user-select:none;
+ user-select:none; 
+}
+
+.cube:after{z-index:1;transform:translate3d(0,50px,0) rotate3d(1,0,0,90deg);}
+.cube.shadow:after{content:"";display:block;filter:blur(20px);}
+
+.wrap-cube.skin-id{width:120px;height:120px;font:120px/0 sans-serif}
+.wrap-cube.skin-id .cube.shadow:after{top:30px;left:10px;background:linear-gradient(135deg,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.12) 100%);}
+.wrap-cube.skin-id .cube .faces>div{background:rgba(0,0,0,.2);}
+.wrap-cube.skin-id .cube .faces>div.up{background:#eee;}
+.wrap-cube.skin-id .cube .faces>div.front,
+.wrap-cube.skin-id .cube .faces>div.back{background:#c3c2c2;}
+.wrap-cube.skin-id .cube .faces>div.right,
+.wrap-cube.skin-id .cube .faces>div.left{background:#d2d2d2;}
+
+
+
+</style>
+</head>
+<body>
+
+ <!-- translate3d(x,y,z),rotate3d(x,y,z,angle) -->
+
+	<div class="wrap-cube skin-id">
+		<div class="cube shadow">
+			<span class="faces">
+				<div class="up"><!--  --></div>
+				<div class="front">1<!--  --></div>
+				<div class="right">2<!--  --></div>
+				<div class="back">3<!--  --></div>
+				<div class="left">4<!--  --></div>
+				<div class="down"><!--  --></div>
+			</span>
+		</div>
+	</div>
+
+
+</body>
+</html>
