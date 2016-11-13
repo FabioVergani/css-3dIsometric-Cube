@@ -1,0 +1,93 @@
+<!DOCTYPE html><html><head><title>isocube-2</title>
+<style>
+
+@keyframes spin3dCube{
+ 0%{transform:rotateX(-33.4deg) rotateY(45deg)}
+ 40%,to{transform:rotateX(-33.4deg) rotateY(225deg)}
+}
+
+
+.wrap-cube,
+.cube,
+.cube:after,
+.cube > .face{text-align:center;border:0;outline:0;margin:0 auto;perspective:none;}
+
+.cube,
+.cube:after,
+.cube > .face{position:absolute;width:1em;height:1em;padding:0;backface-visibility:hidden;}
+
+.wrap-cube,.cube{background:transparent;}
+.wrap-cube,.cube:after{position:relative;}
+
+.wrap-cube{overflow:visible;padding: .32em .22em .32em .22em;}
+
+.cube,
+.cube > .face{font:1em/0 sans-serif;}
+.cube > .face:nth-of-type(1){transform:translate3d(0,-.5em,0) rotate3d(1,0,0,90deg);}
+.cube > .face:nth-of-type(2){transform:translate3d(0,0,.5em) rotate3d(0,0,0,0);}
+.cube > .face:nth-of-type(3){transform:translate3d(.5em,0,0) rotate3d(0,1,0,90deg);}
+.cube > .face:nth-of-type(4){transform:translate3d(0,0,-.5em) rotate3d(0,1,0,-180deg);}
+.cube > .face:nth-of-type(5){transform:translate3d(-.5em,0,0) rotate3d(0,1,0,-90deg);}
+.cube > .face:nth-of-type(6){transform:translate3d(0,.5em,0) rotate3d(1,0,0,-90deg);}
+
+.cube{
+ z-index:2;	
+ transform:scale(1);
+ transform-origin:50% 50%; 
+ transform-style: preserve-3d;
+ transform:rotateX(-33.4deg) rotateY(45deg) rotateZ(0deg);
+ transition:transform 1s ease-in-out;
+
+ animation: spin3dCube 4s 0s ease-in-out infinite;
+ 
+ -webkit-user-select:none;
+ -moz-user-select:none; 
+ -ms-user-select:none;
+ user-select:none; 
+}
+
+.cube:after{z-index:1;transform:translate3d(0,50px,0) rotate3d(1,0,0,90deg);}
+.cube.shadow:after{display:block;content:"";filter:blur(20px);}
+
+.wrap-cube.skin-id{width:120px;height:120px;font:120px/0 sans-serif}
+.wrap-cube.skin-id .cube.shadow:after{top:30px;left:10px;background:linear-gradient(135deg,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.12) 100%);}
+.wrap-cube.skin-id .cube > .face{background:rgba(0,0,0,.2);}
+.wrap-cube.skin-id .cube > .face:nth-of-type(1){background:#eee;}
+.wrap-cube.skin-id .cube > .face:nth-of-type(2),
+.wrap-cube.skin-id .cube > .face:nth-of-type(4){background:#c3c2c2;}
+.wrap-cube.skin-id .cube > .face:nth-of-type(3),
+.wrap-cube.skin-id .cube > .face:nth-of-type(5){background:#d2d2d2;}
+
+
+
+
+/*
+.cube > .face{animation: spin3dCube 4s 0s ease-in-out infinite;}
+ 
+translate3d(x,y,z),rotate3d(x,y,z,angle)
+.wrap-cube{border:1px solid red;}
+.cube.transparent > .face{backface-visibility:visible;}
+ -webkit-animation: spin3dCube 10s ease-in-out infinite 2s;
+ animation: spin3dCube 10s ease-in-out infinite 2s;
+*/
+
+</style>
+</head>
+<body>
+
+ <!-- translate3d(x,y,z),rotate3d(x,y,z,angle) -->
+
+	<div class="wrap-cube skin-id">
+		<div class="cube shadow">
+			<div class="face"><!-- up --></div>
+			<div class="face"><!-- front --></div>
+			<div class="face"><!-- right --></div>
+			<div class="face"><!-- back --></div>
+			<div class="face"><!-- left --></div>
+			<div class="face"><!-- down --></div>
+		</div>
+	</div>
+
+
+</body>
+</html>
